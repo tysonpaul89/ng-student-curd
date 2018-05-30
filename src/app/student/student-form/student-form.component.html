@@ -4,7 +4,39 @@
   </div>
 </div>
 <div class="row mt-2">
-  <div class="col">
-    <h5>Student Form Page</h5>
-  </div>
+  <div class="col mt-2">
+    <h5 class="text-center">Student Detail Form</h5>
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit(studentForm.value)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          [formControl]="studentForm.controls['name']"
+          type="text"
+          name="name"
+          id="name"
+          class="form-control"
+          placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input
+          [formControl]="studentForm.controls['age']"
+          type="text"
+          name="age"
+          id="age"
+          class="form-control"
+          placeholder="Age">
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of birth</label>
+        <input
+          [formControl]="studentForm.controls['dob']"
+          type="date"
+          name="dob"
+          id="dob"
+          class="form-control"
+          placeholder="date of birth">
+      </div>
+    </form>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </div>

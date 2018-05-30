@@ -24,7 +24,7 @@ export class StudentListComponent implements OnInit {
 
   deleteStudent(id: number) {
     console.log(id);
-    // TODO: delete func
+    // TODO: delete functionality
     this.router.navigate(['']);
   }
 
