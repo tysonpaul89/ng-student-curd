@@ -6,13 +6,12 @@
 <div class="row mt-2">
   <div class="col mt-2">
     <h5 class="text-center">Student Detail Form</h5>
-    <form [formGroup]="studentForm" (ngSubmit)="onSubmit(studentForm.value)">
+    <form (ngSubmit)="onSubmit()" [formGroup]="studentForm">
       <div class="form-group">
         <label for="name">Name</label>
         <input
-          [formControl]="studentForm.controls['name']"
+          formControlName="name"
           type="text"
-          name="name"
           id="name"
           class="form-control"
           placeholder="Name">
@@ -20,9 +19,8 @@
       <div class="form-group">
         <label for="age">Age</label>
         <input
-          [formControl]="studentForm.controls['age']"
           type="text"
-          name="age"
+          formControlName="age"
           id="age"
           class="form-control"
           placeholder="Age">
@@ -30,13 +28,12 @@
       <div class="form-group">
         <label for="dob">Date of birth</label>
         <input
-          [formControl]="studentForm.controls['dob']"
           type="date"
-          name="dob"
+          formControlName="dob"
           id="dob"
           class="form-control"
           placeholder="date of birth">
       </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <button type="submit" class="btn btn-primary">Submit</button>
 </div>
