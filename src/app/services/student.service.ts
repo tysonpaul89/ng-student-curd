@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Student } from '../models/student';
 
 @Injectable()
 export class StudentService {
 
-  students:Student[] = [];
+  students: Student[] = [];
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getStudents() {
-    this.http.get('http://localhost/student-curd-api/web/index.php?r=student/get-students').subscribe((res: Response) => {
-      res.json().forEach(studentObj => {
-        this.students.push(new Student(studentObj));
-      });
+    this.http.get('http://localhost/student-curd-api/web/index.php?r=student/get-students').subscribe((res) => {
+     console.log(res);
       return this.students;
-    })
+    });
   }
 
 }
