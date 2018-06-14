@@ -5,6 +5,9 @@
 /dist-server
 /tmp
 /out-tsc
+/backend/build
+/backend/db
+/backend/node_modules
 
 # dependencies
 /node_modules
