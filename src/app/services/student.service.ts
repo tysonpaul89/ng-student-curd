@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Student } from '../models/student';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class StudentService {
 
   students: Student[] = [];
+  apiUrl = 'http://localhost:3300';
 
   constructor(private http: HttpClient) { }
 
   getStudents() {
-    this.http.get('http://localhost/student-curd-api/web/index.php?r=student/get-students').subscribe((res) => {
+    this.http.get(this.apiUrl + '/students').subscribe((res) => {
      console.log(res);
-      return this.students;
+      // return this.students;
     });
   }
 

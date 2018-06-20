@@ -12,7 +12,7 @@ export class StudentListComponent implements OnInit {
   students: Student[];
 
   constructor(private studentService: StudentService, private router: Router) {
-    // this.students = this.studentService.getStudents();
+    this.studentService.getStudents();
     this.students = [
       new Student({id: 1, name: 'Tyson', age: 28, dob: '1989-07-20'}),
       new Student({id: 2, name: 'Seethu', age: 28, dob: '1989-09-14'})

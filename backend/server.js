@@ -2,6 +2,7 @@ const express = require('express')
 const Nedb = require('nedb')
 const bodyParser = require('body-parser')
 const studentController = require('./student.controller')
+const cors = require('cors')
 
 // Create a new express application instance
 const app = express()
@@ -39,6 +40,7 @@ app.locals.db = db
 
 // Configuring packages
 app.use(bodyParser.json())
+app.use(cors())
 
 // Routing
 app.use('/', studentController)
