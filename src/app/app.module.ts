@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
@@ -29,6 +31,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    BsDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,43 +1,37 @@
-<div class="row mt-2">
-  <div class="col">
-    <a routerLink="/create-student" class="btn btn-primary">Create Student</a>
-  </div>
-</div>
-<div class="row mt-2">
-  <div class="col">
-    <table class="table">
-      <thead class="thead-light">
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Age</th>
-        <th scope="col">Date of Birth</th>
-        <th scope="col">Image</th>
-        <th scope="col">Created</th>
-        <th scope="col">Updated</th>
-        <th scope="col" colspan="3">
-          <div class="text-center">Actions</div>
-        </th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of students">
-          <th scope="row">{{student.id}}</th>
-          <td>{{student.name}}</td>
-          <td>{{student.age}}</td>
-          <td>{{student.dob}}</td>
-          <td>{{student.image}}</td>
-          <td>{{student.created}}</td>
-          <td>{{student.updated}}</td>
-          <td class="p-1">
-            <a [routerLink]="['/view-student/' + student.id]" class="btn btn-info btn-sm">View</a>
-          </td>
-          <td class="p-1">
-            <a [routerLink]="['/edit-student/' + student.id]" class="btn btn-secondary btn-sm">Edit</a>
-          </td>
-          <td class="p-1">
-            <button (click)="deleteStudent(student.id)" class="btn btn-danger btn-sm">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<app-student-form [editStudent]="student"></app-student-form>
+<div class="col-md-12">
+  <table class="table">
+    <thead class="thead-light">
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Image</th>
+      <th scope="col">Created</th>
+      <th scope="col">Updated</th>
+      <th scope="col" colspan="3">
+        <div class="text-center">Actions</div>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <th scope="row">{{student.id}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.dob}}</td>
+        <td>{{student.image}}</td>
+        <td>{{student.created}}</td>
+        <td>{{student.updated}}</td>
+        <td class="p-1">
+          <a [routerLink]="['/view-student/' + student.id]" class="btn btn-primary btn-sm">View</a>
+        </td>
+        <td class="p-1">
+          <button type="button" (click)="fillStudentForm(student)" class="btn btn-info btn-sm">Edit</button>
+        </td>
+        <td class="p-1">
+          <button type="button" (click)="deleteStudent(student.id)" class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
 })
 export class StudentListComponent implements OnInit {
   students: Student[];
+  student: Student;
 
   constructor(private studentService: StudentService, private router: Router) {
-    this.studentService.getStudents();
+    // this.studentService.getStudents();
     this.students = [
       new Student({id: 1, name: 'Tyson', age: 28, dob: '1989-07-20'}),
       new Student({id: 2, name: 'Seethu', age: 28, dob: '1989-09-14'})
@@ -22,6 +23,18 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Fills the clicked student data into the form
+   * @param student Student who clicked to edit
+   */
+  fillStudentForm(student: Student) {
+    this.student = student;
+  }
+
+  /**
+   * Deletes the student
+   * @param id Student ID to delete
+   */
   deleteStudent(id: number) {
     console.log(id);
     // TODO: delete functionality

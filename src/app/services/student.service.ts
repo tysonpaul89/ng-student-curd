@@ -15,7 +15,6 @@ export class StudentService {
   getStudents() {
     this.http.get(this.apiUrl + '/students').subscribe((res) => {
      console.log(res);
-      // return this.students;
     });
   }
 
