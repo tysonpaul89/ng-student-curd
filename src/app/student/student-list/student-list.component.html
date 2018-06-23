@@ -1,4 +1,17 @@
-<app-student-form [editStudent]="student"></app-student-form>
+<div *ngIf="alert !== undefined">
+  <alert
+  [type]="alert.type"
+  [dismissible]="alert.dismissible"
+  [dismissOnTimeout]="2000"
+  [isOpen]="true"
+  (onClosed)="alertClose()"
+  >{{alert.message}}</alert>
+</div>
+<app-student-form
+  [editStudent]="student"
+  (alertEvent)="alertMessage($event)"
+  (studentDataChanges)="reloadStudentList($event)"
+  ></app-student-form>
 <div class="col-md-12">
   <table class="table">
     <thead class="thead-light">

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     BsDatepickerModule.forRoot(),
+    AlertModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

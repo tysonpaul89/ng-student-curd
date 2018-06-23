@@ -53,7 +53,7 @@ router.post('/student', (req, res) => {
     res.json({
       status: true,
       message: 'Student added added successfully',
-      data: addedData
+      data: null
     })
   })
 })
@@ -72,7 +72,7 @@ router.put('/student/:id', (req, res) => {
     res.json({
       status: true,
       message: 'Student data updated successfully',
-      data: updatedCount
+      data: null
     })
   })
 })
@@ -90,7 +90,7 @@ router.delete('/student/:id', (req, res) => {
     res.json({
       status: true,
       message: 'Student data deleted successfully',
-      data: deleteCount
+      data: null
     })
   })
 })

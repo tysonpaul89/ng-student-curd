@@ -1,26 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { StudentService } from '../../services/student.service';
 import { Student } from '../../models/student';
 import { Router } from '@angular/router';
+import { IHttpResponse } from '../../http.response';
+import { IAlert } from '../../alert';
 
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent implements OnInit, OnChanges {
   students: Student[];
   student: Student;
+  alert: IAlert;
 
   constructor(private studentService: StudentService, private router: Router) {
-    // this.studentService.getStudents();
-    this.students = [
-      new Student({id: 1, name: 'Tyson', age: 28, dob: '1989-07-20'}),
-      new Student({id: 2, name: 'Seethu', age: 28, dob: '1989-09-14'})
-    ];
+    this.listStudents();
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+  }
+
+  /**
+   * To list student details
+   */
+  listStudents() {
+    // Gets the students list
+    this.studentService.getStudents()
+      .subscribe((res: IHttpResponse<Student[]>) => {
+        this.students = res.data;
+      });
   }
 
   /**
@@ -39,6 +53,35 @@ export class StudentListComponent implements OnInit {
     console.log(id);
     // TODO: delete functionality
     this.router.navigate(['']);
+  }
+
+  /**
+   * To display alert message when the
+   * EventEmitter emits data from the child component
+   */
+  alertMessage(alertMsg) {
+    this.alert = alertMsg;
+  }
+
+  event1Func(temp) {
+    console.log('event1Func: ', temp);
+  }
+
+  /**
+   * To delete the current alert message data after it is
+   * disappear from the page
+   */
+  alertClose() {
+    delete this.alert;
+  }
+
+  /**
+   * Reloads the student listing
+   */
+  reloadStudentList(isReload) {
+    if (isReload) {
+      this.listStudents();
+    }
   }
 
 }
