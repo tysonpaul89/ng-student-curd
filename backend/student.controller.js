@@ -41,21 +41,24 @@ router.get('/student/:id', (req, res) => {
 
 /**
  * POST /student
- * To add a student
+ * To add a new student
  */
 router.post('/student', (req, res) => {
   const db = req.app.locals.db
-  db.insert(req.body, (err, addedData) => {
-    if (err) {
-      throw new Error(err)
-    }
+  db.count({}, (err, cnt) => { // gets the current db record count
+    req.body.id = cnt + 1; // Id auto increment
+    db.insert(req.body, (err, addedData) => { // Inerts the student data
+      if (err) {
+        throw new Error(err)
+      }
 
-    res.json({
-      status: true,
-      message: 'Student added added successfully',
-      data: null
+      res.json({
+        status: true,
+        message: 'Student added added successfully',
+        data: null
+      })
     })
-  })
+  });
 })
 
 /**

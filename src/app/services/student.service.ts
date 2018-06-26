@@ -12,11 +12,38 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * To insert the new student data
+   * @param  {Student} student
+   * @return {Observable}
+   */
+  createStudent(student: Student): Observable<IHttpResponse<any>> {
+    return this.http.post<IHttpResponse<any>>(this.apiUrl + '/student', student);
+  }
+
+  /**
+   * To get all the student details
+   * @return {Observable}
+   */
   getStudents(): Observable<IHttpResponse<Student[] | Student>> {
     return this.http.get<IHttpResponse<Student[] | Student>>(this.apiUrl + '/students');
   }
 
+  /**
+   * To update a student data
+   * @param  {Student} student
+   * @return {Observable}
+   */
   updateStudent(student: Student): Observable<IHttpResponse<any>> {
     return this.http.put<IHttpResponse<any>>(this.apiUrl + '/student/' + student.id, student);
+  }
+
+  /**
+   * To delete student
+   * @param  {number} id
+   * @return {Observable}
+   */
+  deleteStudent(id: number) {
+    return this.http.delete<IHttpResponse<any>>(this.apiUrl + '/student/' + id);
   }
 }

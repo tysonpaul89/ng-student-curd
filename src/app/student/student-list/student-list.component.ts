@@ -39,7 +39,7 @@ export class StudentListComponent implements OnInit, OnChanges {
 
   /**
    * Fills the clicked student data into the form
-   * @param student Student who clicked to edit
+   * @param {Student} student Student who clicked to edit
    */
   fillStudentForm(student: Student) {
     this.student = student;
@@ -47,24 +47,37 @@ export class StudentListComponent implements OnInit, OnChanges {
 
   /**
    * Deletes the student
-   * @param id Student ID to delete
+   * @param {number} id Student ID to delete
    */
   deleteStudent(id: number) {
-    console.log(id);
-    // TODO: delete functionality
-    this.router.navigate(['']);
+    this.studentService.deleteStudent(id)
+      .subscribe((res) => {
+        if (res.status) {
+          //To reload the student listing
+          this.reloadStudentList(true);
+
+          this.alertMessage({
+            type: 'success',
+            message: res.message,
+            dismissible: true,
+          });
+        } else {
+          this.alertMessage({
+            type: 'danger',
+            message: res.message,
+            dismissible: true,
+          });
+        }
+      });
   }
 
   /**
    * To display alert message when the
    * EventEmitter emits data from the child component
+   * @param {IAlert} alertMsg Data to show in boostrap alert box
    */
-  alertMessage(alertMsg) {
+  alertMessage(alertMsg: IAlert) {
     this.alert = alertMsg;
-  }
-
-  event1Func(temp) {
-    console.log('event1Func: ', temp);
   }
 
   /**
@@ -77,6 +90,7 @@ export class StudentListComponent implements OnInit, OnChanges {
 
   /**
    * Reloads the student listing
+   * @param {boolean} isReload Flag variable to call list student service
    */
   reloadStudentList(isReload) {
     if (isReload) {
