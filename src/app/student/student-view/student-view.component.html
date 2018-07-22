@@ -4,7 +4,27 @@
   </div>
 </div>
 <div class="row mt-2">
-  <div class="col">
-    <h5>Student Details Page</h5>
-  </div>
+    <div class="col-md-4 offset-md-4">
+      <table class="table">
+        <thead>
+          <tr class="text-center">
+            <th colspan="2">Student Details</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="student !== undefined" class="text-center">
+          <tr>
+            <th scope="row">Name</th>
+            <td>{{student.name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Age</th>
+            <td>{{student.age}}</td>
+          </tr>
+          <tr>
+              <th scope="row">DOB</th>
+              <td>{{student.dob | date}}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
 </div>

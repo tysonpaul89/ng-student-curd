@@ -18,7 +18,10 @@ export class StudentService {
    * @return {Observable}
    */
   createStudent(student: Student): Observable<IHttpResponse<any>> {
-    return this.http.post<IHttpResponse<any>>(this.apiUrl + '/student', student);
+    return this.http.post<IHttpResponse<any>>(
+      this.apiUrl + '/student',
+      student
+    );
   }
 
   /**
@@ -26,7 +29,15 @@ export class StudentService {
    * @return {Observable}
    */
   getStudents(): Observable<IHttpResponse<Student[] | Student>> {
-    return this.http.get<IHttpResponse<Student[] | Student>>(this.apiUrl + '/students');
+    return this.http.get<IHttpResponse<Student[] | Student>>(
+      this.apiUrl + '/students'
+    );
+  }
+
+  getStudent(id: string): Observable<IHttpResponse<Student>> {
+    return this.http.get<IHttpResponse<Student>>(
+      this.apiUrl + '/student/' + id
+    );
   }
 
   /**
@@ -35,7 +46,10 @@ export class StudentService {
    * @return {Observable}
    */
   updateStudent(student: Student): Observable<IHttpResponse<any>> {
-    return this.http.put<IHttpResponse<any>>(this.apiUrl + '/student/' + student._id, student);
+    return this.http.put<IHttpResponse<any>>(
+      this.apiUrl + '/student/' + student._id,
+      student
+    );
   }
 
   /**
@@ -44,6 +58,8 @@ export class StudentService {
    * @return {Observable}
    */
   deleteStudent(id: number) {
-    return this.http.delete<IHttpResponse<any>>(this.apiUrl + '/student/' + id);
+    return this.http.delete<IHttpResponse<any>>(
+      this.apiUrl + '/student/' + id
+    );
   }
 }
