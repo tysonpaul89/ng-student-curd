@@ -16,16 +16,15 @@ app.locals.db = db
 
 // Removes all data
 // db.remove({}, { multi: true }, function (err, numRemoved) {
-// });
+// })
 
 // nedb - Insert example
 // const insertData = [
-//   {id: 1, name: 'Tyson', age: 28, dob: '1989-07-20'},
-//   {id: 2, name: 'Seethu', age: 28, dob: '1989-09-14'},
-//   {id: 3, name: 'Jack', age: 26, dob: '1989-02-20'},
-//   {id: 4, name: 'Jack', age: 25, dob: '1990-06-12'}
-// ];
-// db.insert(insertData, (err, newDoc) => console.log(newDoc));
+//   {name: 'Tyson', age: 28, dob: '1989-07-20'},
+//   {name: 'Seethu', age: 28, dob: '1989-09-14'},
+//   {name: 'Jack', age: 26, dob: '1989-02-20'},
+// ]
+// db.insert(insertData, (err, newDoc) => console.log(newDoc))
 
 // nedb - Querying examples
 // To get all document

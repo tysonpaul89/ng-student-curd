@@ -53,7 +53,7 @@ export class StudentListComponent implements OnInit, OnChanges {
     this.studentService.deleteStudent(id)
       .subscribe((res) => {
         if (res.status) {
-          //To reload the student listing
+          // To reload the student listing
           this.reloadStudentList(true);
 
           this.alertMessage({

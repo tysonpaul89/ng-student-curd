@@ -27,7 +27,7 @@ export class StudentFormComponent implements OnInit, OnChanges {
 
   constructor(private fb: FormBuilder, private studentService: StudentService) {
     this.studentForm = this.fb.group({
-      id: null,
+      _id: null,
       name: '',
       age: '',
       dob: '',
@@ -46,7 +46,7 @@ export class StudentFormComponent implements OnInit, OnChanges {
     if (!changes.editStudent.firstChange) {
       const currentStudent: Student = changes.editStudent.currentValue;
       this.studentForm.setValue({
-        id: currentStudent.id,
+        _id: currentStudent._id,
         name: currentStudent.name.trim(),
         age: currentStudent.age,
         dob: currentStudent.dob.trim()
@@ -97,6 +97,7 @@ export class StudentFormComponent implements OnInit, OnChanges {
         dismissible: true,
       });
     }
+    this.studentForm.reset();
   }
 
   /**

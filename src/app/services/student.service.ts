@@ -35,7 +35,7 @@ export class StudentService {
    * @return {Observable}
    */
   updateStudent(student: Student): Observable<IHttpResponse<any>> {
-    return this.http.put<IHttpResponse<any>>(this.apiUrl + '/student/' + student.id, student);
+    return this.http.put<IHttpResponse<any>>(this.apiUrl + '/student/' + student._id, student);
   }
 
   /**

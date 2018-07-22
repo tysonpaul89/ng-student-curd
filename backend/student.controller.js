@@ -26,7 +26,7 @@ router.get('/students', (req, res) => {
  */
 router.get('/student/:id', (req, res) => {
   const db = req.app.locals.db
-  db.findOne({id: +req.params.id}, (err, studentData) => {
+  db.findOne({_id: req.params.id}, (err, studentData) => {
     if (err) {
       throw new Error(err)
     }
@@ -46,8 +46,16 @@ router.get('/student/:id', (req, res) => {
 router.post('/student', (req, res) => {
   const db = req.app.locals.db
   db.count({}, (err, cnt) => { // gets the current db record count
-    req.body.id = cnt + 1; // Id auto increment
-    db.insert(req.body, (err, addedData) => { // Inerts the student data
+    if (err) {
+      throw new Error(err)
+    }
+    // deleting _id element from the student data since
+    // its need to be auto incremented
+    if ('_id' in req.body) {
+      delete req.body._id
+    }
+
+    db.insert(req.body, (err, addedData) => { // Inserts the student data
       if (err) {
         throw new Error(err)
       }
@@ -58,7 +66,7 @@ router.post('/student', (req, res) => {
         data: null
       })
     })
-  });
+  })
 })
 
 /**
@@ -67,7 +75,7 @@ router.post('/student', (req, res) => {
  */
 router.put('/student/:id', (req, res) => {
   const db = req.app.locals.db
-  db.update({ id: +req.params.id }, { $set: req.body }, {}, (err, updatedCount) => {
+  db.update({ _id: req.params.id }, { $set: req.body }, {}, (err, updatedCount) => {
     if (err) {
       throw new Error(err)
     }
@@ -86,7 +94,7 @@ router.put('/student/:id', (req, res) => {
  */
 router.delete('/student/:id', (req, res) => {
   const db = req.app.locals.db
-  db.remove({id: +req.params.id}, {}, (err, deleteCount) => {
+  db.remove({_id: req.params.id}, {}, (err, deleteCount) => {
     if (err) {
       throw new Error(err)
     }

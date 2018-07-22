@@ -15,7 +15,6 @@
 <div class="col-md-12">
   <table class="table">
     <thead class="thead-light">
-      <th scope="col">Id</th>
       <th scope="col">Name</th>
       <th scope="col">Age</th>
       <th scope="col">Date of Birth</th>
@@ -28,7 +27,6 @@
     </thead>
     <tbody>
       <tr *ngFor="let student of students">
-        <th scope="row">{{student.id}}</th>
         <td>{{student.name}}</td>
         <td>{{student.age}}</td>
         <td>{{student.dob}}</td>
@@ -36,13 +34,13 @@
         <td>{{student.created}}</td>
         <td>{{student.updated}}</td>
         <td class="p-1">
-          <a [routerLink]="['/view-student/' + student.id]" class="btn btn-primary btn-sm">View</a>
+          <a [routerLink]="['/view-student/' + student._id]" class="btn btn-primary btn-sm">View</a>
         </td>
         <td class="p-1">
           <button type="button" (click)="fillStudentForm(student)" class="btn btn-info btn-sm">Edit</button>
         </td>
         <td class="p-1">
-          <button type="button" (click)="deleteStudent(student.id)" class="btn btn-danger btn-sm">Delete</button>
+          <button type="button" (click)="deleteStudent(student._id)" class="btn btn-danger btn-sm">Delete</button>
         </td>
       </tr>
     </tbody>

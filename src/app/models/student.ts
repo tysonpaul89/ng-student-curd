@@ -1,5 +1,5 @@
 export class Student {
-    id: number;
+    _id: number;
     name: string;
     age: number;
     dob: string;
@@ -8,7 +8,7 @@ export class Student {
     updated: string;
 
     constructor(studentObj: { id: number, name: string, age: number, dob: string, image?: string, created?: string, updated?: string}) {
-        this.id = studentObj.id;
+        this._id = studentObj.id;
         this.name = studentObj.name;
         this.age = studentObj.age;
         this.dob = studentObj.dob;
